@@ -12,9 +12,13 @@ function App() {
   const selectedPlace = useRef();
   const [pickedPlaces, setPickedPlaces] = useState([]);
 
-  navigator.geolocation.getCurrentPosition(() => {
-    sortPlacesByDistance(AVAILABLE_PLACES, )
-  })
+  navigator.geolocation.getCurrentPosition((position) => {
+   const sortedPlaces =  sortPlacesByDistance(
+      AVAILABLE_PLACES,
+      position.coords.latitude,
+      position.coords.longitude,
+    );
+  });
 
   function handleStartRemovePlace(id) {
     modal.current.open();
